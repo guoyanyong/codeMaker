@@ -1,0 +1,43 @@
+<idea-plugin>
+    <id>code-helper</id>
+    <name>CodeingHelper</name>
+    <version>2.0</version>
+    <vendor email="guoyanyong@live.cn" url="http://www.5ina.cn">哆喱</vendor>
+
+    <description>
+
+    </description>
+
+    <change-notes>
+
+    </change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="145.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here
+        <applicationConfigurable instance="com.cloud.ui.CodeMakerConfigration" displayName="代码生成器配置"/>-->
+        <toolWindow id="CodeApi" icon="/icons/layergroup-fill.svg" anchor="bottom" factoryClass="com.cloud.ApiToolWindowFactory" order="last"/>
+    </extensions>
+
+    <actions>
+        <group id="EtPlugin.PopMenu" text="生成代码" description="code-maker">
+            <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="Generate"/>
+            <action id="EtPlugin.PopMenu.codeMaker" class="com.cloud.actions.CodeMakerAction" text="生成模板代码" description="生成Controller、Service、entity代码"/>
+        </group>
+
+    </actions>
+
+    <project-components>
+        <component>
+            <implementation-class>com.cloud.ui.ApiToolComponent</implementation-class>
+        </component>
+    </project-components>
+</idea-plugin>

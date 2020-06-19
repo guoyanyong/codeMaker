@@ -1,0 +1,44 @@
+package ${package};  
+  
+import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Column;
+import java.util.Date;  
+import java.io.Serializable;
+import javax.validation.constraints.NotNull;
+<#list imports as import>
+import ${import}; 
+</#list>
+
+/**
+ * @Object entity.
+ * @author ethan
+ * @currentTime
+ */
+@Table(name = "${table.tableName}")
+public class <@upperFC>${table.objectName}</@upperFC> implements Serializable{  
+<#list properties as pro>
+	//${pro.desc}
+	<#if pro.primaryKey >
+    @Id
+	@GeneratedValue(generator="MySql",strategy=GenerationType.IDENTITY)
+	</#if>
+	<#if pro.isNullable == "NO" && !pro.primaryKey>
+	@NotNull(message="${pro.desc}=>不能为空")
+	</#if>
+	@Column(name = "${pro.column}")
+    private ${pro.typeName} ${pro.property};
+</#list>  
+
+<#list properties as pro>  
+    public void set<@upperFC>${pro.property}</@upperFC>(${pro.typeName} ${pro.property}){  
+        this.${pro.property}=${pro.property};  
+    }  
+    public ${pro.typeName} get<@upperFC>${pro.property}</@upperFC>(){  
+        return this.${pro.property};  
+    }  
+
+</#list>  
+}  

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.cloud.ui.VersionPanel">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="1139" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <splitpane id="c1d9f" binding="apiPanel">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <scrollpane id="1b33a" binding="scrollPanelApi">
+            <constraints>
+              <splitpane position="left"/>
+            </constraints>
+            <properties>
+              <autoscrolls value="true"/>
+              <enabled value="true"/>
+              <minimumSize width="100" height="15"/>
+              <preferredSize width="400" height="360"/>
+              <verticalScrollBarPolicy value="20"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="78712" class="javax.swing.JTree" binding="tree1" default-binding="true">
+                <constraints/>
+                <properties>
+                  <autoscrolls value="true"/>
+                  <minimumSize width="200" height="0"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+          <tabbedpane id="34827" binding="apiDetailTab">
+            <constraints>
+              <splitpane position="right"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </tabbedpane>
+        </children>
+      </splitpane>
+    </children>
+  </grid>
+</form>

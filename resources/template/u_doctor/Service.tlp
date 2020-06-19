@@ -1,0 +1,11 @@
+package ${package};
+
+import com.cloud.core.base.service.IBaseService;
+
+<#list imports as import>
+import ${import}; 
+</#list>
+
+public interface I<@upperFC>${table.objectName}</@upperFC>Service extends IBaseService<<@upperFC>${table.objectName}</@upperFC>,${primaryKeyType}> {
+
+}

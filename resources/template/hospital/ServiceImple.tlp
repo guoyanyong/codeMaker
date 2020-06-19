@@ -1,0 +1,14 @@
+package ${package};
+
+import org.springframework.stereotype.Service;
+
+import com.hospital.core.base.service.impl.BaseServiceImpl;
+<#list imports as import>
+import ${import}; 
+</#list>
+
+@Service
+public class <@upperFC>${table.objectName}</@upperFC>Service extends BaseServiceImpl<<@upperFC>${table.objectName}</@upperFC>,${primaryKeyType}>
+		implements I<@upperFC>${table.objectName}</@upperFC>Service {
+	
+}

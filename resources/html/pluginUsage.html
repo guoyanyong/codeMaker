@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h1>设置注释模板</h1>
+    <div>类注释模板如下：</div>
+    <img src="images/class.png" height="997" width="1288"/><br/>
+    <h2>类注释格式如下：</h2>
+    <div style="padding-left: 50px">
+        ** <br/>
+        * 功能描述 <br/>
+        * @author $user$ <br/>
+        * @createTime $date$ $time$ <br/>
+        */
+    </div>
+
+    <div>方法注释模板如下：</div>
+    <img src="images/method.png" height="997" width="1288"/><br/>
+    <h2>方法注释格式如下：</h2>
+    <div style="padding-left: 50px">
+        ** <br/>
+        * 方法描述 <br/>
+        * @author $user$ <br/>
+        * @createTime $date$ $time$ <br/>
+        $params$ <br/>
+        * @return $returns$ <br/>
+        */
+    </div>
+
+    <div>通过多行模板如下：</div>
+    <img src="images/common.png" height="997" width="1288"/><br/>
+    <h2>通过多行注释格式如下：</h2>
+    <div style="padding-left: 50px">
+        ** <br/>
+        * <br/>
+        */
+    </div>
+
+    <br/>
+    <h1>模板中带有参数的设置方法</h1>
+    <b>1、选中上面定义的模板，点击该按钮</b><br/>
+    <img src="images/variables.png" height="997" width="1288"/><br/>
+    <b>2、进入参数设置界面</b><br/>
+    <img src="images/variables_setting.png" height="455" width="1081"/><br/>
+    <b>3、除“params”参数以外，其它的参数都设置内置的方法即可，params参数的取值设置需要一段groovy脚本，放入“default value”列，注意不要放错哟。</b><br/>
+    <img src="images/params_seting.png" height="455" width="1081"/></div>
+    <div>
+        <h2>groovy脚本如下：</h2>
+        <div>
+            groovyScript("if(\"${_1}\".length() == 2) {return '';} else {def result=''; def params=\"${_1}\".replaceAll('[\\\\[|\\\\]|\\\\s]', '').split(',').toList();for(i = 0; i &lt; params.size(); i++) {if(i==0){result+='* @param ' + params[i] + ' '}else{result+='\\n' + '  * @param ' + params[i] + ' '}}; return result;}", methodParameters());
+        </div>
+    </div>
+</body>
+</html>

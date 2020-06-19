@@ -1,0 +1,20 @@
+package ${package};  
+
+import com.cloud.core.modules.controller.BaseController;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+<#list imports as import>
+import ${import}; 
+</#list>
+
+/**
+ *
+ * @author ethan
+ * @currentTime
+ */
+@RestController
+@RequestMapping("${table.objectName}")
+public class <@upperFC>${table.objectName}</@upperFC>Controller extends BaseController<<@upperFC>${table.objectName}</@upperFC>, ${primaryKeyType}>{
+
+}

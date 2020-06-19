@@ -1,0 +1,38 @@
+package ${package};  
+
+import lombok.Data;
+
+import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Column;
+import java.util.Date;  
+import java.io.Serializable;
+import javax.validation.constraints.NotNull;
+import java.time.*;
+<#list imports as import>
+import ${import}; 
+</#list>
+
+/**
+ * @Object entity.
+ * @author ethan
+ * @currentTime
+ */
+@Data
+@Table(name = "${table.tableName}")
+public class <@upperFC>${table.objectName}</@upperFC> implements Serializable{  
+<#list properties as pro>
+	//${pro.desc}
+	<#if pro.primaryKey >
+    @Id
+	@GeneratedValue(generator="MySql",strategy=GenerationType.IDENTITY)
+	</#if>
+	<#if pro.isNullable == "NO" && !pro.primaryKey>
+	@NotNull(message="${pro.desc}=>不能为空")
+	</#if>
+	@Column(name = "${pro.column}")
+    private ${pro.typeName} ${pro.property};
+</#list>
+}  
